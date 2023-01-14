@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:web_app/core/designer/aton/button_purple.dart';
 import 'package:web_app/core/extensions/screen_ext.dart';
 import 'package:web_app/core/themes/themes_default.dart';
+import 'package:web_app/src/platform_actions/platform_actions_ext.dart';
 
 class SocialMenu extends StatelessWidget {
   const SocialMenu({
@@ -15,16 +17,12 @@ class SocialMenu extends StatelessWidget {
         const SocialItems(),
         if (!context.isMobile()) const SizedBox(width: kDefaultPadding),
         if (!context.isMobile())
-          ElevatedButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.symmetric(
-                horizontal: kDefaultPadding * 1.5,
-                vertical: kDefaultPadding / (context.isDesktop() ? 1 : 2),
-              ),
-            ),
-            child: const Text("Go!"),
-          ),
+          ButtonPurple(
+              title: "Go!",
+              callback: () {
+                context.sendPlatformAction("testAction",
+                    {"arg1": 1, "arg2": true, "arg3": "Text From Flutter"});
+              }),
       ],
     );
   }

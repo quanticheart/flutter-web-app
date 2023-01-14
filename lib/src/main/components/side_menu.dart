@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:web_app/core/designer/aton/button_purple.dart';
+import 'package:web_app/core/designer/aton/flutter_full_logo.dart';
+import 'package:web_app/core/themes/theme_ext.dart';
 import 'package:web_app/core/themes/themes_default.dart';
 import 'package:web_app/src/main/controllers/menu_controller.dart';
 
@@ -13,15 +15,21 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: kDarkBlackColor,
+        color: context.background,
         child: Obx(
           () => ListView(
             children: [
               DrawerHeader(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: kDefaultPadding * 3.5),
-                  child: SvgPicture.asset("assets/icons/logo.svg"),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const FlutterLogoFull(),
+                      ButtonPurple(title: "Go!", callback: () {}),
+                    ],
+                  ),
                 ),
               ),
               ...List.generate(
@@ -64,7 +72,6 @@ class DrawerItem extends StatelessWidget {
         onTap: press,
         title: Text(
           title,
-          style: const TextStyle(color: Colors.white),
         ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:web_app/src/home/home_screen.dart';
 import 'package:web_app/src/main/components/more_message.dart';
 
 import 'components/header.dart';
+import 'components/session_message.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
@@ -23,6 +24,7 @@ class MainScreen extends StatelessWidget {
           children: [
             Header(),
             const MoreMessage(),
+            const SessionMessage(),
             Container(
               padding: const EdgeInsets.all(kDefaultPadding),
               constraints: const BoxConstraints(maxWidth: kMaxWidth),
